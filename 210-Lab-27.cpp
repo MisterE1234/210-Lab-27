@@ -49,31 +49,40 @@ int main() {
         switch(menu()){
             case 1:{//Add Villager:
                 
+                //Getting user input for the villager name:
                 cout << "Villager name: ";
-                cin.clear();
-                cin.ignore(10000,'\n');
                 getline(cin, name);
 
+                //Getting user input for the villager species:
                 cout << "Species: ";
                 getline(cin, species);
 
+                //Getting user input for the villager catchphrase:
                 cout << "Catchphrase: ";
                 getline(cin, catchphrase);
 
-                while(!exitLoop){
-                cout << "Friendship Level (integer: 0-10):";
-                cin.clear();
-                cin.ignore(10000,'\n');
+                //Getting user input for the villager friendship level:
+                while(!exitLoop){ //using a while loop to validate user input
+                    cout << "Friendship Level (integer: 0-10):";
+                    cin.clear();
+                    cin.ignore(10000,'\n');
 
-                cin >> friendLevel;
+                    cin >> friendLevel;
 
-                if(friendLevel >= 0 && friendLevel <= 10){
-                    exitLoop = true;
+                    if(!cin.fail()){ //if the input is an integer
+                        if(friendLevel >= 0 && friendLevel <= 10){ // if the integer is 0-10
+                            exitLoop = true;
+                        }
+                        else{
+                            cout << "Invalid friendship level. Please try again." << endl;
+                        }
+                    }
+                    else{
+                        cout << "Invalid entry. Please try again." << endl;
+                    }
                 }
-                else{
-                    cout << "Invalid friendship level. Please try again." << endl;
-                }
-                }
+                villagerFriend[name] = {friendLevel, species, catchphrase};
+                cout << "Added " << name << " to the village.\n" << endl;
 
                 exitLoop = false;
                 break;
@@ -97,7 +106,8 @@ int main() {
                 }
                     break;
                 }
-            case 1:{ //Increase Friendship:
+
+            case 3:{ //Increase Friendship:
                 cout << "Enter the first name of the villager to increase friendship:";
                 cin >> searchKey;
                 auto it = villagerFriend.find(searchKey);
@@ -124,7 +134,7 @@ int main() {
                     break;
             }
 
-            case 2:{ //Decrease Friendship:
+            case 4:{ //Decrease Friendship:
                     cout << "Enter the first name of the villager to decrease friendship:";
                 cin >> searchKey;
                 auto it = villagerFriend.find(searchKey);
@@ -155,7 +165,7 @@ int main() {
                 }
         
             }
-            case 3: { //Search for Villager:
+            case 5: { //Search for Villager:
                 cout << "Enter the first name of the villager you wish to find:";
                 cin >> searchKey;
 
@@ -178,7 +188,7 @@ int main() {
             break;
             }
 
-            case 4:{ //Exit:
+            case 6:{ //Exit:
                 exitLoop = true;
                 cout << "Exiting Program.\n" << endl;
             break;
