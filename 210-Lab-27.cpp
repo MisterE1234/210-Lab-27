@@ -38,17 +38,42 @@ int main() {
                                        // if searchKey is not found
                     cout << "\nFound " << searchKey << " [ ";
         
-                    //listing the friendship level
-                    cout << get<0>(it->second) << ", ";
-                    //listing the species
-                    cout << get<1>(it->second) << ", ";
-                    //listing the catchphrase
-                    cout << get<2>(it->second) << "]" << endl;
-            
-                    cout << endl;
-            } else
-                cout << endl << searchKey << " not found." << endl;
+                    //listing the old friendship level:
+                    cout << "Old Friendship: " << get<0>(it->second) << ", ";
 
+                    //updating the friendship level:
+                    get<0>(it->second) += 1;
+
+                    //listing the new friendship level:
+                    cout << "New Friendship: " << get<0>(it->second) << endl;
+                
+                    break;
+                } else
+                    cout << endl << searchKey << " not found." << endl;
+                    break;
+
+            case 2: //Decrease Friendship:
+                    cout << "Enter the first name of the villager to increase friendship:";
+                cin >> searchKey;
+                auto it = villagerFriend.find(searchKey);
+                
+                if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
+                                       // if searchKey is not found
+                    cout << "\nFound " << searchKey << " [ ";
+        
+                    //listing the old friendship level:
+                    cout << "Old Friendship: " << get<0>(it->second) << ", ";
+
+                    //updating the friendship level:
+                    get<0>(it->second) -= 1;
+
+                    //listing the new friendship level:
+                    cout << "New Friendship: " << get<0>(it->second) << endl;
+                
+                    break;
+                } else
+                    cout << endl << searchKey << " not found." << endl;
+                    break;
             
 
 
