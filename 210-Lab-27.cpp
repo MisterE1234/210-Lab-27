@@ -9,6 +9,7 @@ using namespace std;
 
 //Prototype Functions:
 int menu();
+auto findVillager (map<string, tuple <int, string, string>>, string);
 
 int main() {
 
@@ -25,8 +26,6 @@ int main() {
     villagerFriend.insert({"Marshal", {2, "Vampire", "Coo coo ca-choo!"}});
     
     while(!exitLoop){
-
-        
 
         switch(menu()){
             case 1: //Increase Friendship:
@@ -48,12 +47,15 @@ int main() {
                     cout << "New Friendship: " << get<0>(it->second) << endl;
                 
                     break;
-                } else
+                } 
+                
+                else{
                     cout << endl << searchKey << " not found." << endl;
+                }
                     break;
 
             case 2: //Decrease Friendship:
-                    cout << "Enter the first name of the villager to increase friendship:";
+                    cout << "Enter the first name of the villager to decrease friendship:";
                 cin >> searchKey;
                 it = villagerFriend.find(searchKey);
                 
@@ -83,6 +85,9 @@ int main() {
         
 
             case 3: //Search for Villager:
+                cout << "Enter the first name of the villager you wish to find:";
+                cin >> searchKey;
+
                 it = villagerFriend.find(searchKey);
                 if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
                     
@@ -112,57 +117,23 @@ int main() {
             break;
         }
        
-    //access the map using a range-based for loop
-    cout << "Villager details:" << endl;
-    for (auto pair : villagerFriend) {
-        cout << pair.first << " [ "; //listing the name of the villager
-    //listing the friendship level
-        cout << get<0>(pair.second) << ", ";
-    //listing the species
-        cout << get<1>(pair.second) << ", ";
-    //listing the catchphrase
-        cout << get<2>(pair.second) << "]" << endl;
-    
-    }
-
-    }
-
-    
-    // access the map using iterators
-    cout << "\nVillagers, their friendship level,species, and favorite catchphrases (iterators):" << endl;
-    for (map<string, tuple<int, string, string>>::iterator it = villagerFriend.begin(); 
-                                               it != villagerFriend.end(); ++it) {
-        cout << it->first << " [ ";//Listing the name of the villager
-    
-    //listing the friendship level
-        cout << get<0>(it->second) << ", ";
-    //listing the species
-        cout << get<1>(it->second) << ", ";
-    //listing the catchphrase
-        cout << get<2>(it->second) << "]" << endl;
-    }
-
-    // delete an element from the map:
-    villagerFriend.erase("Raymond");
-
-    // search for an element using .find() to avoid errors
-    searchKey = "Audie";
-    auto it = villagerFriend.find(searchKey);
-    if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
-        cout << "\nFound " << searchKey << " [ ";
-        
+        //access the map using a range-based for loop
+        cout << "Villager details:" << endl;
+        for (auto pair : villagerFriend) {
+            cout << pair.first << " [ "; //listing the name of the villager
         //listing the friendship level
-        cout << get<0>(it->second) << ", ";
+            cout << get<0>(pair.second) << ", ";
         //listing the species
-        cout << get<1>(it->second) << ", ";
+            cout << get<1>(pair.second) << ", ";
         //listing the catchphrase
-        cout << get<2>(it->second) << "]" << endl;
-            
-        cout << endl;
-    } else
-        cout << endl << searchKey << " not found." << endl;
+            cout << get<2>(pair.second) << "]" << endl;
+    
+        }
 
+    }
+
+    
+    
     // report size, clear, report size again to confirm map operations
     cout << "\nSize before clear: " << villagerFriend.size() << endl;
     villagerFriend.clear();
@@ -200,4 +171,17 @@ int menu(){
     }
 }
     return choice;
+}
+
+auto findVillager (map<string, tuple <int, string, string>> villagerFriend, string searchKey){
+    
+    auto it = villagerFriend.find(searchKey);
+    if(it == villagerFriend.end()){
+        cout << endl << searchKey << " not found " << endl;
+        return villagerFriend.end();
+    }
+
+    return it;
+
+
 }
