@@ -25,15 +25,15 @@ int main() {
         cout << get<0>(pair.second) << " - ";
     //listing the catchphrase
         cout << get<1>(pair.second) << endl;
-        }
-        
+    }
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
     for (map<string, tuple<int, string>>::iterator it = villagerFriend.begin(); 
                                                it != villagerFriend.end(); ++it) {
-        cout << it->first << ": ";
-        for (auto friend : it->second) {
-            cout << friend << " ";
+        cout << it->first << ": ";//Listing the name of the villager
+        //range loop to traverse the tuple
+        for (auto level : it->second){
+            cout << level << " ";
         }
         cout << endl;
     }
