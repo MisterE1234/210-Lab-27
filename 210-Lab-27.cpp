@@ -84,36 +84,36 @@ int main() {
 
             case 3: //Search for Villager:
                 it = villagerFriend.find(searchKey);
-    if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
-        cout << "\nFound " << searchKey << " [ ";
+                if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
+                    
+                    cout << "\nFound " << searchKey << " [ ";
         
-        //listing the friendship level
-        cout << get<0>(it->second) << ", ";
-        //listing the species
-        cout << get<1>(it->second) << ", ";
-        //listing the catchphrase
-        cout << get<2>(it->second) << "]" << endl;
+                    //listing the friendship level
+                    cout << get<0>(it->second) << ", ";
+                    //listing the species
+                    cout << get<1>(it->second) << ", ";
+                    //listing the catchphrase
+                    cout << get<2>(it->second) << "]" << endl;
             
-        cout << endl;
-    } else
-        cout << endl << searchKey << " not found." << endl;
+                    cout << endl;
+                } else
+                    cout << endl << searchKey << " not found." << endl;
 
-        break;
+            break;
 
-    case 4: //Exit:
-        exitLoop = true;
-        cout << "Exiting Program." << endl;
-        break;
+            case 4: //Exit:
+                exitLoop = true;
+                cout << "Exiting Program." << endl;
+            break;
 
-    default: //Invalid input:
+            default: //Invalid input:
 
-        cout << "Invalid choice. Please try again." << endl;
-        break;
-}
-
-    // access the map using a range-based for loop
-    cout << "Villagers, their friendship level,species, and favorite catchphrases (range-based for loop):" << endl;
+                cout << "Invalid choice. Please try again." << endl;
+            break;
+        }
+       
+    //access the map using a range-based for loop
+    cout << "Villager details:" << endl;
     for (auto pair : villagerFriend) {
         cout << pair.first << " [ "; //listing the name of the villager
     //listing the friendship level
@@ -124,6 +124,10 @@ int main() {
         cout << get<2>(pair.second) << "]" << endl;
     
     }
+
+    }
+
+    
     // access the map using iterators
     cout << "\nVillagers, their friendship level,species, and favorite catchphrases (iterators):" << endl;
     for (map<string, tuple<int, string, string>>::iterator it = villagerFriend.begin(); 
