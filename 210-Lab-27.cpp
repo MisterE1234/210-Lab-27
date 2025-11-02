@@ -8,6 +8,7 @@
 using namespace std;
 
 //Prototype Functions:
+int menu();
 
 int main() {
     // declarations
@@ -72,4 +73,30 @@ int main() {
     cout << "Size after clear: " << villagerFriend.size() << endl;
 
     return 0;
+}
+
+int menu(){
+    bool valid = false;
+    int choice;
+
+    while(!valid){
+    cout << "1. Increase Friendship\n" << "2. Decrease Friendship\n"
+    << "3. Search for Villager\n" << "4. Exit\n" << endl;
+
+    cin.ignore(10000, '\n');
+    cin.clear();
+
+    cout << "Enter choice (integer 1-4):";
+    cin >> choice;
+
+    if(choice == 1 || choice == 2 || choice == 3 || choice == 4){
+        valid = true;
+    }
+    else{
+        cin.ignore(10000, '\n');
+        cin.clear();
+        cout << "Invalid choice. Please try again." << endl;
+    }
+}
+    return choice;
 }
