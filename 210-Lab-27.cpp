@@ -3,6 +3,7 @@
 //This project is meant to track levels of friendship with different villagers using std::map:
 #include <iostream>
 #include <map>
+#include <vector>
 #include <tuple>
 using namespace std;
 
@@ -19,21 +20,20 @@ int main() {
     // access the map using a range-based for loop
     cout << "Villagers, their friendship level, and their favorite catchphrases (range-based for loop):" << endl;
     for (auto pair : villagerFriend) {
-        cout << pair.first << ": ";
-        for(auto level : get<0>(pair.second))
-            cout << "Friendship Level: " << level << ", ";
-        for (auto catchphrase : get<1>(pair.second))
-            cout << "\"" << catchphrase << "\" ";
-        cout << endl;
-    }
-
+        cout << pair.first << ": "; //listing the name of the villager
+    //listing the friendship level
+        cout << get<0>(pair.second) << " - ";
+    //listing the catchphrase
+        cout << get<1>(pair.second) << endl;
+        }
+        
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
     for (map<string, tuple<int, string>>::iterator it = villagerFriend.begin(); 
                                                it != villagerFriend.end(); ++it) {
         cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
+        for (auto friend : it->second) {
+            cout << friend << " ";
         }
         cout << endl;
     }
