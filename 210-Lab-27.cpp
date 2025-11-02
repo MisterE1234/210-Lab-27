@@ -43,7 +43,7 @@ int main() {
         cout << get<2>(it->second) << "]" << endl;
     }
 
-    // delete an element
+    // delete an element from the map:
     villagerFriend.erase("Raymond");
 
     // search for an element using .find() to avoid errors
