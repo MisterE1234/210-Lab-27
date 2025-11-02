@@ -9,7 +9,7 @@ using namespace std;
 
 //Prototype Functions:
 int menu();
-auto findVillager (map<string, tuple <int, string, string>>, string);
+
 
 int main() {
 
@@ -168,28 +168,12 @@ int menu(){
         valid = true;
     }
     else{
-        cin.ignore(10000, '\n');
         cin.clear();
+        cin.ignore(10000, '\n');
+        
         cout << "Invalid choice. Please try again." << endl;
     }
 }
     return choice;
 }
 
-//findVillager() searches for a villager in the map and returns an iterator to it if found, or the end iterator if not found.
-//Requires: map<string, tuple <int, string, string>>, string
-//Return: iterator to the found villager or end iterator if not found.
-auto findVillager (map<string, tuple <int, string, string>> villagerFriend, string searchKey){
-    
-    //search for the villager in the map villagerFriend:
-    auto it = villagerFriend.find(searchKey);
-    if(it == villagerFriend.end()){ //if the villager is not found:
-        cout << endl << searchKey << " not found " << endl;
-        return villagerFriend.end();
-    }
-
-
-    return it;
-
-
-}
