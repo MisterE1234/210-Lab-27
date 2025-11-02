@@ -80,9 +80,10 @@ int main() {
                     }
                 
                     break;
-                } else
+                } else{
                     cout << endl << searchKey << " not found." << endl;
                     break;
+                }
         
             }
             case 3: { //Search for Villager:
@@ -102,9 +103,9 @@ int main() {
                     cout << get<2>(it->second) << "]" << endl;
             
                     cout << endl;
-                } else
+                } else{
                     cout << endl << searchKey << " not found." << endl;
-
+                }
             break;
             }
 
@@ -122,7 +123,7 @@ int main() {
        
         //access the map using a range-based for loop
         cout << "Villager details:" << endl;
-        for (auto pair : villagerFriend) {
+        for (auto &pair : villagerFriend) {
             cout << pair.first << " [ "; //listing the name of the villager
         //listing the friendship level
             cout << get<0>(pair.second) << ", ";
@@ -156,9 +157,9 @@ int menu(){
     while(!valid){
     cout << "1. Increase Friendship\n" << "2. Decrease Friendship\n"
     << "3. Search for Villager\n" << "4. Exit\n" << endl;
-
-    cin.ignore(10000, '\n');
     cin.clear();
+    cin.ignore(10000, '\n');
+    
 
     cout << "Enter choice (integer 1-4):";
     cin >> choice;
