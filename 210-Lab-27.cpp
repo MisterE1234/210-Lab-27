@@ -47,7 +47,35 @@ int main() {
     while(!exitLoop){
 
         switch(menu()){
-            case 1:{//Add Villager:}
+            case 1:{//Add Villager:
+                
+                cout << "Villager name: ";
+                cin.clear();
+                cin.ignore(10000,'\n');
+                getline(cin, name);
+
+                cout << "Species: ";
+                getline(cin, species);
+
+                cout << "Catchphrase: ";
+                getline(cin, catchphrase);
+
+                while(!exitLoop){
+                cout << "Friendship Level (integer: 0-10):";
+                cin.clear();
+                cin.ignore(10000,'\n');
+
+                cin >> friendLevel;
+
+                if(friendLevel >= 0 && friendLevel <= 10){
+                    exitLoop = true;
+                }
+                else{
+                    cout << "Invalid friendship level. Please try again." << endl;
+                }
+                }
+                break;
+            }
             case 1:{ //Increase Friendship:
                 cout << "Enter the first name of the villager to increase friendship:";
                 cin >> searchKey;
