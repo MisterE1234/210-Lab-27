@@ -12,7 +12,10 @@ int menu();
 
 
 int main() {
-
+    string name;
+    string species;
+    string catchphrase;
+    int friendLevel;
     string searchKey;
     bool exitLoop = false;
     int choice;
@@ -40,10 +43,11 @@ int main() {
         }
 
     cout << endl;
-    
+
     while(!exitLoop){
 
         switch(menu()){
+            case 1:{//Add Villager:}
             case 1:{ //Increase Friendship:
                 cout << "Enter the first name of the villager to increase friendship:";
                 cin >> searchKey;
@@ -171,14 +175,14 @@ int menu(){
 
     //a while loop to validate user input:
     while(!valid){
-    cout << "1. Increase Friendship\n" << "2. Decrease Friendship\n"
-    << "3. Search for Villager\n" << "4. Exit\n" << endl;
+    cout << "1. Add Villager\n" << "2. Delete Villager" << "3. Increase Friendship\n" << "4. Decrease Friendship\n"
+    << "5. Search for Villager\n" << "6. Exit\n" << endl;
 
-    cout << "Enter choice (integer 1-4):";
+    cout << "Enter choice (integer 1-6):";
     cin >> choice;
 
-    //If the user enters a valid choice (1-4), set valid to true to exit the loop, if not restart the loop:
-    if(choice == 1 || choice == 2 || choice == 3 || choice == 4){
+    //If the user enters a valid choice (1-6), set valid to true to exit the loop, if not restart the loop:
+    if(choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5 || choice == 6){
         valid = true;
     }
     else{
