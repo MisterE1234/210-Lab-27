@@ -9,33 +9,38 @@ using namespace std;
 
 int main() {
     // declarations
-    map<string, tuple <int, string>> villagerFriend; // map of villager Friendship levels (name, tuple (friendship level, catchphrase))
+    map<string, tuple <int, string, string>> villagerFriend; // map of villager Friendship levels (name, tuple (friendship level, species, catchphrase))
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagerFriend["Audie"] = {8, "Cowabunga!"};
-    villagerFriend["Raymond"] = {5, "What's up?"};
-    villagerFriend.insert({"Marshal", {2, "Coo coo ca-choo!"}});
+    villagerFriend["Audie"] = {8, "Human", "Cowabunga!"};
+    villagerFriend["Raymond"] = {5, "Mutant", "What's up?"};
+    villagerFriend.insert({"Marshal", {2, "Vampire", "Coo coo ca-choo!"}});
 
     // access the map using a range-based for loop
     cout << "Villagers, their friendship level, and their favorite catchphrases (range-based for loop):" << endl;
     for (auto pair : villagerFriend) {
-        cout << pair.first << ": "; //listing the name of the villager
+        cout << pair.first << " ["; //listing the name of the villager
     //listing the friendship level
-        cout << get<0>(pair.second) << " - ";
+        cout << get<0>(pair.second) << ", ";
+    //listing the species
+        cout << get<1>(pair.second) << ", ";
     //listing the catchphrase
-        cout << get<1>(pair.second) << endl;
+        cout << get<2>(pair.second) << " ]" << endl;
+    
     }
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, tuple<int, string>>::iterator it = villagerFriend.begin(); 
+    for (map<string, tuple<int, string, string>>::iterator it = villagerFriend.begin(); 
                                                it != villagerFriend.end(); ++it) {
-        cout << it->first << ": ";//Listing the name of the villager
-        //range loop to traverse the tuple
-        for (auto level : it->second){
-            cout << level << " ";
-        }
-        cout << endl;
+        cout << it->first << " [";//Listing the name of the villager
+    
+    //listing the friendship level
+        cout << get<0>(it->second) << ", ";
+    //listing the species
+        cout << get<1>(it->second) << ", ";
+    //listing the catchphrase
+        cout << get<2>(it->second) << " ]" << endl;
     }
 
     // delete an element
@@ -46,9 +51,15 @@ int main() {
     auto it = villagerFriend.find(searchKey);
     if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite catchphrase: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
+        cout << "\nFound " << searchKey << " [";
+        
+        //listing the friendship level
+        cout << get<0>(it->second) << ", ";
+        //listing the species
+        cout << get<1>(it->second) << ", ";
+        //listing the catchphrase
+        cout << get<2>(it->second) << " ]" << endl;
+            
         cout << endl;
     } else
         cout << endl << searchKey << " not found." << endl;
