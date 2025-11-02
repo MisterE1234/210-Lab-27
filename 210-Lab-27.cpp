@@ -7,6 +7,8 @@
 #include <tuple>
 using namespace std;
 
+//Prototype Functions:
+
 int main() {
     // declarations
     map<string, tuple <int, string, string>> villagerFriend; // map of villager Friendship levels (name, tuple (friendship level, species, catchphrase))
