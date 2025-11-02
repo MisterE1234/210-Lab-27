@@ -74,8 +74,29 @@ int main() {
                     cout << "Invalid friendship level. Please try again." << endl;
                 }
                 }
+
+                exitLoop = false;
                 break;
             }
+
+            case 2:{//Delete Villager:
+                cout << "Enter the first name of the villager to delete:";
+                cin >> searchKey;
+                auto it = villagerFriend.find(searchKey);
+                
+                if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
+                                       // if searchKey is not found
+                    cout << "\nFound " << searchKey << " [ ";
+                        villagerFriend.erase(it); //erasing the villager
+                        cout << "Deleted " << searchKey << " from the village.\n";
+                    break;
+                } 
+                
+                else{
+                    cout << endl << searchKey << " not found." << endl;
+                }
+                    break;
+                }
             case 1:{ //Increase Friendship:
                 cout << "Enter the first name of the villager to increase friendship:";
                 cin >> searchKey;
