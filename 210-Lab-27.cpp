@@ -28,7 +28,7 @@ int main() {
     while(!exitLoop){
 
         switch(menu()){
-            case 1: //Increase Friendship:
+            case 1:{ //Increase Friendship:
                 cout << "Enter the first name of the villager to increase friendship:";
                 cin >> searchKey;
                 auto it = villagerFriend.find(searchKey);
@@ -53,11 +53,12 @@ int main() {
                     cout << endl << searchKey << " not found." << endl;
                 }
                     break;
+            }
 
-            case 2: //Decrease Friendship:
+            case 2:{ //Decrease Friendship:
                     cout << "Enter the first name of the villager to decrease friendship:";
                 cin >> searchKey;
-                it = villagerFriend.find(searchKey);
+                auto it = villagerFriend.find(searchKey);
                 
                 if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
@@ -83,12 +84,12 @@ int main() {
                     cout << endl << searchKey << " not found." << endl;
                     break;
         
-
-            case 3: //Search for Villager:
+            }
+            case 3: { //Search for Villager:
                 cout << "Enter the first name of the villager you wish to find:";
                 cin >> searchKey;
 
-                it = villagerFriend.find(searchKey);
+                auto it = villagerFriend.find(searchKey);
                 if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
                     
                     cout << "\nFound " << searchKey << " [ ";
@@ -105,16 +106,18 @@ int main() {
                     cout << endl << searchKey << " not found." << endl;
 
             break;
+            }
 
-            case 4: //Exit:
+            case 4:{ //Exit:
                 exitLoop = true;
                 cout << "Exiting Program." << endl;
             break;
-
-            default: //Invalid input:
+            }
+            default: {//Invalid input:
 
                 cout << "Invalid choice. Please try again." << endl;
             break;
+            }
         }
        
         //access the map using a range-based for loop
@@ -173,13 +176,18 @@ int menu(){
     return choice;
 }
 
+//findVillager() searches for a villager in the map and returns an iterator to it if found, or the end iterator if not found.
+//Requires: map<string, tuple <int, string, string>>, string
+//Return: iterator to the found villager or end iterator if not found.
 auto findVillager (map<string, tuple <int, string, string>> villagerFriend, string searchKey){
     
+    //search for the villager in the map villagerFriend:
     auto it = villagerFriend.find(searchKey);
-    if(it == villagerFriend.end()){
+    if(it == villagerFriend.end()){ //if the villager is not found:
         cout << endl << searchKey << " not found " << endl;
         return villagerFriend.end();
     }
+
 
     return it;
 
