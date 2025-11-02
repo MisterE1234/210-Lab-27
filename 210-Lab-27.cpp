@@ -55,28 +55,34 @@ int main() {
             case 2: //Decrease Friendship:
                     cout << "Enter the first name of the villager to increase friendship:";
                 cin >> searchKey;
-                auto it = villagerFriend.find(searchKey);
+                it = villagerFriend.find(searchKey);
                 
                 if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
                     cout << "\nFound " << searchKey << " [ ";
         
                     //listing the old friendship level:
-                    cout << "Old Friendship: " << get<0>(it->second) << ", ";
+                    cout << "Current Friendship: " << get<0>(it->second) << ", ";
 
                     //updating the friendship level:
+                    if(get<0>(it->second) > 0){ //if Friendship is above 0 lower the friendship:
                     get<0>(it->second) -= 1;
 
                     //listing the new friendship level:
                     cout << "New Friendship: " << get<0>(it->second) << endl;
+                    }
+
+                    else{ //if friendship is 0 or below already display an error messege:
+                        cout << "Friendship cannot go below 0." << endl;
+                    }
                 
                     break;
                 } else
                     cout << endl << searchKey << " not found." << endl;
                     break;
-            
+        
 
-
+            case 3: //Search for Villager:
 
 
 
