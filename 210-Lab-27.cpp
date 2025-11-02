@@ -38,7 +38,9 @@ int main() {
             cout << get<2>(pair.second) << "]" << endl;
     
         }
-        
+
+    cout << endl;
+    
     while(!exitLoop){
 
         switch(menu()){
