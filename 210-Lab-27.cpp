@@ -83,11 +83,34 @@ int main() {
         
 
             case 3: //Search for Villager:
+                it = villagerFriend.find(searchKey);
+    if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
+                                       // if searchKey is not found
+        cout << "\nFound " << searchKey << " [ ";
+        
+        //listing the friendship level
+        cout << get<0>(it->second) << ", ";
+        //listing the species
+        cout << get<1>(it->second) << ", ";
+        //listing the catchphrase
+        cout << get<2>(it->second) << "]" << endl;
+            
+        cout << endl;
+    } else
+        cout << endl << searchKey << " not found." << endl;
 
+        break;
 
+    case 4: //Exit:
+        exitLoop = true;
+        cout << "Exiting Program." << endl;
+        break;
 
+    default: //Invalid input:
 
-        }
+        cout << "Invalid choice. Please try again." << endl;
+        break;
+}
 
     // access the map using a range-based for loop
     cout << "Villagers, their friendship level,species, and favorite catchphrases (range-based for loop):" << endl;
