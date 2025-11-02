@@ -25,6 +25,20 @@ int main() {
     villagerFriend["Raymond"] = {5, "Mutant", "What's up?"};
     villagerFriend.insert({"Marshal", {2, "Vampire", "Coo coo ca-choo!"}});
     
+
+    //access the map using a range-based for loop
+        cout << "Villager details:" << endl;
+        for (auto &pair : villagerFriend) {
+            cout << pair.first << " [ "; //listing the name of the villager
+        //listing the friendship level
+            cout << get<0>(pair.second) << ", ";
+        //listing the species
+            cout << get<1>(pair.second) << ", ";
+        //listing the catchphrase
+            cout << get<2>(pair.second) << "]" << endl;
+    
+        }
+        
     while(!exitLoop){
 
         switch(menu()){
@@ -111,7 +125,7 @@ int main() {
 
             case 4:{ //Exit:
                 exitLoop = true;
-                cout << "Exiting Program." << endl;
+                cout << "Exiting Program.\n" << endl;
             break;
             }
             default: {//Invalid input:
@@ -157,9 +171,6 @@ int menu(){
     while(!valid){
     cout << "1. Increase Friendship\n" << "2. Decrease Friendship\n"
     << "3. Search for Villager\n" << "4. Exit\n" << endl;
-    cin.clear();
-    cin.ignore(10000, '\n');
-    
 
     cout << "Enter choice (integer 1-4):";
     cin >> choice;
