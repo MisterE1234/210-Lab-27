@@ -49,6 +49,9 @@ int main() {
         switch(menu()){
             case 1:{//Add Villager:
                 
+                //clearing the input buffer:
+                cin.clear();
+                cin.ignore(100000, '\n');
                 //Getting user input for the villager name:
                 cout << "Villager name: ";
                 getline(cin, name);
@@ -73,18 +76,22 @@ int main() {
                         if(friendLevel >= 0 && friendLevel <= 10){ // if the integer is 0-10
                             exitLoop = true;
                         }
-                        else{
+                        else{ //if the integer is not 0-10
                             cout << "Invalid friendship level. Please try again." << endl;
                         }
                     }
-                    else{
+                    else{ //if the input is not an integer
                         cout << "Invalid entry. Please try again." << endl;
                     }
                 }
+                
+                //adding the villager to the map
                 villagerFriend[name] = {friendLevel, species, catchphrase};
-                cout << "Added " << name << " to the village.\n" << endl;
 
+                cout << "Added " << name << " to the village.\n" << endl;
+                //resetting exitLoop for future use
                 exitLoop = false;
+
                 break;
             }
 
@@ -93,8 +100,8 @@ int main() {
                 cin >> searchKey;
                 auto it = villagerFriend.find(searchKey);
                 
-                if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
+                if (it != villagerFriend.end()) {  // if the villager is found
+                                       
                     cout << "\nFound " << searchKey << " [ ";
                         villagerFriend.erase(it); //erasing the villager
                         cout << "Deleted " << searchKey << " from the village.\n";
@@ -112,8 +119,7 @@ int main() {
                 cin >> searchKey;
                 auto it = villagerFriend.find(searchKey);
                 
-                if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
+                if (it != villagerFriend.end()) { //if the villager is found
                     cout << "\nFound " << searchKey << " [ ";
         
                     //listing the old friendship level:
@@ -139,8 +145,7 @@ int main() {
                 cin >> searchKey;
                 auto it = villagerFriend.find(searchKey);
                 
-                if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
+                if (it != villagerFriend.end()) { //if the villager is found
                     cout << "\nFound " << searchKey << " [ ";
         
                     //listing the old friendship level:
@@ -170,7 +175,7 @@ int main() {
                 cin >> searchKey;
 
                 auto it = villagerFriend.find(searchKey);
-                if (it != villagerFriend.end()) {  // the iterator points to beyond the end of the map
+                if (it != villagerFriend.end()) { // if the villager is found
                     
                     cout << "\nFound " << searchKey << " [ ";
         
