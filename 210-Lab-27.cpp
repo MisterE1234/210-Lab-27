@@ -63,13 +63,11 @@ int main() {
                 //Getting user input for the villager catchphrase:
                 cout << "Catchphrase: ";
                 getline(cin, catchphrase);
-
+                    
                 //Getting user input for the villager friendship level:
                 while(!exitLoop){ //using a while loop to validate user input
-                    cout << "Friendship Level (integer: 0-10):";
-                    cin.clear();
-                    cin.ignore(10000,'\n');
-
+                    cout << "Friendship Level (integer: 0-10): ";
+                    
                     cin >> friendLevel;
 
                     if(!cin.fail()){ //if the input is an integer
@@ -88,7 +86,7 @@ int main() {
                 //adding the villager to the map
                 villagerFriend[name] = {friendLevel, species, catchphrase};
 
-                cout << "Added " << name << " to the village.\n" << endl;
+                cout << "Added " << name << ".\n" << endl;
                 //resetting exitLoop for future use
                 exitLoop = false;
 
@@ -96,13 +94,13 @@ int main() {
             }
 
             case 2:{//Delete Villager:
-                cout << "Enter the first name of the villager to delete:";
+                cout << "Enter the first name of the villager to delete: ";
                 cin >> searchKey;
                 auto it = villagerFriend.find(searchKey);
                 
                 if (it != villagerFriend.end()) {  // if the villager is found
                                        
-                    cout << "\nFound " << searchKey << " [ ";
+                    cout << "\nFound " << searchKey << ":\n";
                         villagerFriend.erase(it); //erasing the villager
                         cout << "Deleted " << searchKey << " from the village.\n";
                     break;
@@ -239,7 +237,7 @@ int menu(){
 
     //a while loop to validate user input:
     while(!valid){
-    cout << "1. Add Villager\n" << "2. Delete Villager" << "3. Increase Friendship\n" << "4. Decrease Friendship\n"
+    cout << "1. Add Villager\n" << "2. Delete Villager\n" << "3. Increase Friendship\n" << "4. Decrease Friendship\n"
     << "5. Search for Villager\n" << "6. Exit\n" << endl;
 
     cout << "Enter choice (integer 1-6):";
